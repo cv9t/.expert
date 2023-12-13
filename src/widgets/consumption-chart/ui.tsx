@@ -50,7 +50,7 @@ export const ConsumptionChart = () => {
 
   const series = useMemo(
     () =>
-      Object.entries(consumption).map(([event, { data }]) => ({
+      Object.entries(consumption).map(([event, data]) => ({
         name: event,
         data,
       })),

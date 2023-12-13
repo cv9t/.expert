@@ -3,7 +3,7 @@ import { Section } from "./section";
 import { UploadForecast } from "~/features/upload-forecast";
 import { useUnit } from "effector-react";
 import { forecastModel } from "~/entities/forecast";
-import { teamModel } from "~/entities/team";
+import { TeamCard, teamModel } from "~/entities/team";
 import { AddTeam } from "~/features/add-team";
 import { AddPurchase } from "~/features/add-purchase";
 import { Header } from "~/widgets/header";
@@ -13,7 +13,6 @@ import { ReactNode } from "react";
 import { ConsumptionChart } from "~/widgets/consumption-chart";
 // TODO: Обернуть бы в lazy
 import { GenerationChart } from "~/widgets/generation-chart";
-import { TeamList } from "~/widgets/team-list";
 
 const EMPTY_SECTION = "Для данной секции необходим файл с прогнозами";
 
@@ -36,12 +35,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
 };
 
 export const DashboardPage = () => {
-  const stores = useUnit({
+  const { teams, forecastSpecified } = useUnit({
     forecastSpecified: forecastModel.$forecastSpecified,
-    atLeastOneTeam: teamModel.$atLeastOneTeam,
+    teams: teamModel.$teams,
   });
 
-  const sectionEmpty = !stores.forecastSpecified && EMPTY_SECTION;
+  const atLeastOneTeam = teams.length > 0;
+  const sectionEmpty = !forecastSpecified && EMPTY_SECTION;
 
   return (
     <Layout>
@@ -60,12 +60,18 @@ export const DashboardPage = () => {
                     <Grid.Col>
                       <Stack>
                         <AddTeam />
-                        {stores.atLeastOneTeam && <AddPurchase />}
+                        {atLeastOneTeam && <AddPurchase />}
                       </Stack>
                     </Grid.Col>
-                    {stores.atLeastOneTeam && (
+                    {atLeastOneTeam && (
                       <Grid.Col>
-                        <TeamList />
+                        <Grid>
+                          {teams.map((team) => (
+                            <Grid.Col key={team.id} span={4}>
+                              <TeamCard team={team} />
+                            </Grid.Col>
+                          ))}
+                        </Grid>
                       </Grid.Col>
                     )}
                   </Grid>

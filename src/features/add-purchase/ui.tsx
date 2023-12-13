@@ -1,9 +1,9 @@
 import { Button, Group, NumberInput, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { teamModel, Construction } from "~/entities/team";
-import { IconPlus } from "@tabler/icons-react";
 import { useUnit } from "effector-react";
 import { FormValues, formSubmitted } from "./model";
+import { Icon } from "~/shared/ui";
 
 const constructionData: { value: Construction; label: string }[] = [
   {
@@ -78,7 +78,7 @@ export const AddPurchase = () => {
           placeholder="Цена"
           {...form.getInputProps("price")}
         />
-        <Button type="submit" leftIcon={<IconPlus size="1.3rem" />}>
+        <Button type="submit" leftIcon={<Icon type="plus" />}>
           Добавить покупку
         </Button>
       </Group>

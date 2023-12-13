@@ -1,6 +1,6 @@
 import { createEvent, createStore } from "effector";
 import { __DEV__ } from "~/shared/config/env";
-import { Team } from "./types";
+import { Purchase, Team } from "./types";
 
 export const teamAdded = createEvent<Team>();
 export const teamRemoved = createEvent<string>();
@@ -8,7 +8,7 @@ export const teamNameEdited = createEvent<{ teamId: string; name: string }>();
 
 export const purchaseAdded = createEvent<{
   teamId: string;
-  purchase: Team["purchases"][number];
+  purchase: Purchase;
 }>();
 export const purchaseRemoved = createEvent<{
   teamId: string;
@@ -16,11 +16,10 @@ export const purchaseRemoved = createEvent<{
 }>();
 export const purchaseEdited = createEvent<{
   teamId: string;
-  purchase: Team["purchases"][number];
+  purchase: Purchase;
 }>();
 
 export const $teams = createStore<Team[]>([]);
-export const $atLeastOneTeam = $teams.map((teams) => teams.length > 0);
 
 $teams
   .on(teamAdded, (teams, newTeam) => [...teams, newTeam])

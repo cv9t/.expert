@@ -1,7 +1,7 @@
 import { Button, Group, TextInput } from "@mantine/core";
-import { IconPlus } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
 import { FormValues, formSubmitted } from "./model";
+import { Icon } from "~/shared/ui";
 
 export const AddTeam = () => {
   const form = useForm<FormValues>({
@@ -28,7 +28,7 @@ export const AddTeam = () => {
           placeholder="Название команды"
           {...form.getInputProps("teamName")}
         />
-        <Button type="submit" leftIcon={<IconPlus size="1.3rem" />}>
+        <Button type="submit" leftIcon={<Icon type="plus" />}>
           Добавить команду
         </Button>
       </Group>

@@ -8,6 +8,7 @@ import {
   TablerIconsProps,
   IconUpload,
   IconX,
+  IconPlus,
 } from "@tabler/icons-react";
 import { ReactNode } from "react";
 
@@ -19,7 +20,8 @@ type IconType =
   | "solar-panel"
   | "windmill"
   | "upload"
-  | "x";
+  | "x"
+  | "plus";
 
 type IconSize = "sm" | "md" | "lg";
 
@@ -37,6 +39,7 @@ const icons: { [key in IconType]: (props: TablerIconsProps) => ReactNode } = {
   windmill: IconWindmill,
   upload: IconUpload,
   x: IconX,
+  plus: IconPlus,
 };
 
 const iconSizes: { [key in IconSize]: string } = {

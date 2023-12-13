@@ -49,7 +49,11 @@ export const GenerationChart = () => {
   const generation = useUnit(forecastModel.$generation);
 
   const series = useMemo(
-    () => generation.map(({ event, data }) => ({ name: event, data })),
+    () =>
+      Object.entries(generation).map(([event, data]) => ({
+        name: event,
+        data,
+      })),
     [generation]
   );
 

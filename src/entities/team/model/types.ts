@@ -15,3 +15,5 @@ export type Team = {
     canEdit: boolean;
   }[];
 };
+
+export type Purchase = Team["purchases"][number];

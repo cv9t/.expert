@@ -3,10 +3,17 @@ export type ForecastEvent = "Ветер" | "Солнце" | "Больницы" |
 export type Forecast = Record<ForecastEvent, number[]>;
 
 export type Consumption = {
-  [key in ForecastEvent]?: {
-    data: number[];
-    total: number;
-  };
+  [key in ForecastEvent]?: number[];
 };
 
-export type Generation = { event: ForecastEvent; data: number[] }[];
+export type TotalConsumption = {
+  [key in ForecastEvent]?: number;
+};
+
+export type Generation = {
+  [key in ForecastEvent]?: number[];
+};
+
+export type TotalGeneration = {
+  [key in ForecastEvent]?: number;
+};
