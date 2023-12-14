@@ -35,7 +35,7 @@ export const fileChanged = createEvent<File>();
 const fileContentValidationSucceed = createEvent<Forecast>();
 const fileContentValidationFailed = createEvent();
 
-// FIXME: Мне похуй, я так чувствую (буферный файл)
+// FIXME: Я так чувствую (буферный файл)
 const $tempFile = createStore<File | null>(null);
 export const $file = createStore<File | null>(null);
 

@@ -7,7 +7,7 @@ import { NUMBER_OF_TICKS } from "~/shared/config/game";
 
 const HEIGHT = 320;
 
-// TODO: Запили сюда стили, сука, из useMantineTheme
+// TODO: Запили сюда стили из useMantineTheme
 export const GenerationChart = () => {
   const [options] = useState<ApexOptions>({
     chart: {
